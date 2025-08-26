@@ -1,4 +1,4 @@
- import{ createBrowserRouter, RouterProvider} from "react-router-dom"
+ import{ createBrowserRouter, createHashRouter, RouterProvider} from "react-router-dom"
   
 import './App.css'
 import Layout from './components/Layout/Layout'
@@ -7,7 +7,7 @@ import Home from "./components/pages/Home"
 import Chatprovider from "./context/chatContext"
  
 function App() {
-  const routes= createBrowserRouter([
+  const routes= createHashRouter([
      {path: "",
       element: <Layout />,
       children:[{
