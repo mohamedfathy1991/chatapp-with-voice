@@ -3,13 +3,14 @@ import axios from 'axios';
 import React, { useContext, useEffect } from 'react';
 import { Chatcontext } from '../../context/chatContext';
 import Groupchatmodel from './Groupchatmodel';
+import { BaseUrl } from '../Url';
 
 export default function Mychat() {
   const { user, setselectchat, chats, setchats } = useContext(Chatcontext);
 
   const fetchchat = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/api/chat`, {
+      const { data } = await axios.get(`${BaseUrl}/api/chat`, {
         headers: {
           token: user?.token, // أو Authorization: `Bearer ${user?.token}` لو السيرفر متوقع كده
         },

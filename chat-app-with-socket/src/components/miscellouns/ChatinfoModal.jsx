@@ -20,6 +20,7 @@ import { CloseIcon } from "@chakra-ui/icons";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Chatcontext } from "../../context/chatContext";
+import { BaseUrl } from "../Url";
  
 export default function ChatInfoModal({ 
   isOpen, 
@@ -64,7 +65,7 @@ export default function ChatInfoModal({
     setLoading(true);
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/api/user?search=${query}`,
+        `${BaseUrl}/api/user?search=${query}`,
         { headers: { token: user?.token } }
       );
       setsearchresult(data);
@@ -78,7 +79,7 @@ export default function ChatInfoModal({
   const handleSaveGroup = async () => {
     try {
       await axios.put(
-        `http://localhost:5000/api/chat/group/${selectchat._id}`,
+        `${BaseUrl}/api/chat/group/${selectchat._id}`,
         {
           chatname: groupname,
           users: JSON.stringify(selecteduser.map((u) => u._id)),
@@ -103,7 +104,7 @@ const handleRename = async () => {
     try {
       setLoading(true);
       const { data } = await axios.put(
-        `http://localhost:5000/api/chat/rename`,
+        `${BaseUrl}/api/chat/rename`,
         { groupid: selectchat._id, chatname: groupname },
         { headers: { token: user.token } }
       );

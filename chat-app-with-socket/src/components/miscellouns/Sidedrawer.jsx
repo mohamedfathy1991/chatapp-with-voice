@@ -25,6 +25,7 @@ import { useNavigate } from "react-router-dom";
 import { Chatcontext } from "../../context/chatContext";
 import ChatLoading from "./Chatloading";
 import { Profilemodal } from "./Profilemodal";
+import { BaseUrl } from "../Url";
 
 export default function Sidedrawer() {
   const { user,  setselectchat,chats,setchats} =useContext(Chatcontext);
@@ -76,7 +77,7 @@ export default function Sidedrawer() {
     setLoading(true);
     try {
       const { data } = await axios.post(
-        `http://localhost:5000/api/chat`,
+        `${BaseUrl}/api/chat`,
         { userId },
         {
           headers: {

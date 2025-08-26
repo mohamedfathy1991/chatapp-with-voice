@@ -6,6 +6,7 @@ import { Box } from '@chakra-ui/react';
 import Mychat from '../miscellouns/Mychat';
 import Chatbox from '../miscellouns/Chatbox';
 import Sidedrawer from '../miscellouns/Sidedrawer';
+import { BaseUrl } from '../Url';
 
 export default function Chat() {
   const { user,selectchat, setselectchat,chat, setchat ,loading} = useContext(Chatcontext);
@@ -14,7 +15,7 @@ export default function Chat() {
 
   const getdata = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/chat', {
+      const { data } = await axios.post(`${BaseUrl}/api/chat`, {
         headers: {
           token: user.token
         }

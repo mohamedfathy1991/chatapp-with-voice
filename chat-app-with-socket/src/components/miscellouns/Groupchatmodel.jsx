@@ -20,6 +20,7 @@ import { CloseIcon } from '@chakra-ui/icons'
 import React, { useContext, useState } from 'react'
 import { Chatcontext } from '../../context/chatContext'
 import axios from 'axios'
+import { BaseUrl } from '../Url'
 
 export default function Groupchatmodel({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -41,7 +42,7 @@ export default function Groupchatmodel({ children }) {
     setLoading(true)
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/api/user?search=${query}`,
+        `${BaseUrl}/api/user?search=${query}`,
         {
           headers: {
             token: user?.token,
@@ -72,7 +73,7 @@ export default function Groupchatmodel({ children }) {
 
      try {
       const { data } = await axios.post(
-        `http://localhost:5000/api/chat/group`,{
+        `${BaseUrl}/api/chat/group`,{
             chatname:groupname,
             users:JSON.stringify(selecteduser)
 

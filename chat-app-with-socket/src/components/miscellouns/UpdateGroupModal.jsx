@@ -15,6 +15,7 @@ import {
 import { useState, useContext } from "react";
 import { Chatcontext } from "../../context/chatContext";
 import axios from "axios";
+import { BaseUrl } from "../Url";
 
 export default function UpdateGroupModal({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -27,7 +28,7 @@ export default function UpdateGroupModal({ children }) {
 
     try {
       const { data } = await axios.put(
-        "/api/chat/rename",
+        `${BaseUrl}/api/chat/rename`,
         {
           chatId: selectchat._id,
           chatName: groupName,

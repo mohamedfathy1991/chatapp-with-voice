@@ -11,8 +11,10 @@ import {
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { BaseUrl } from '../Url';
 
 export default function Login() {
+  const URL='https://47c9858a-f22c-45c1-af43-c7df59201e87-00-1ma9m0qigeuxf.picard.replit.dev/'
   const toast = useToast();
   const navigate = useNavigate();
 
@@ -36,7 +38,7 @@ export default function Login() {
     }
 
     try {
-      const { data } = await axios.post('http://localhost:5000/api/user/login', {
+      const { data } = await axios.post(`${BaseUrl}/api/user/login`, {
         email,
         password,
       });

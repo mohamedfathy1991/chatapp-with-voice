@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { Chatcontext } from "../../context/chatContext";
 import { io } from "socket.io-client";
 import VoiceCall from "./Voicecall";
+import { BaseUrl } from "../Url";
 
 export default function SingleMessagebox({ selectchat }) {
   const { user } = useContext(Chatcontext);
@@ -26,7 +27,7 @@ export default function SingleMessagebox({ selectchat }) {
     try {
       setloading(true);
       const { data } = await axios.get(
-        `http://localhost:5000/api/message/${selectchat._id}`,
+        `${BaseUrl}/api/message/${selectchat._id}`,
         {
           headers: {
             token: user?.token,
@@ -93,7 +94,7 @@ export default function SingleMessagebox({ selectchat }) {
 
   // socket start
 useEffect(() => {
-  socketRef.current = io("http://localhost:5000", {
+  socketRef.current = io(`${BaseUrl}`, {
     auth: { userId: user }
   });
    socketRef.current.on("privateMessage", (newMessage) => {

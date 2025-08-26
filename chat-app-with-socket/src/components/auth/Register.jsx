@@ -12,6 +12,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import axios from 'axios';
+import { BaseUrl } from '../Url';
  
 export default function Register() {
   const toast = useToast();
@@ -51,7 +52,7 @@ const navigate=useNavigate()
     }
 
     try {
-      const { data } = await axios.post('http://localhost:5000/api/user/register  ', {
+      const { data } = await axios.post(`${BaseUrl}/api/user/register`, {
         name,
         email,
         password,
