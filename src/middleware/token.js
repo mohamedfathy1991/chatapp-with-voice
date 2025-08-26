@@ -5,7 +5,7 @@ import { userModel } from "../model/user.model.js"
 
 configDotenv()
 export const generatToken=(load)=>{
-      let token = Jwt.sign(load,process.env.SECRET_KEY)
+      let token = Jwt.sign(load,process.env.SECRET_KEY||"omar")
       return token
 
 }
@@ -19,7 +19,7 @@ export const verifyToken = async (req, res, next) => {
     }
 
     // فك تشفير التوكن
-    const decoded = Jwt.verify(token, process.env.SECRET_KEY);
+    const decoded = Jwt.verify(token, process.env.SECRET_KEY||"omar");
 
     if (!decoded?.id) {
       return next(new AppErr('Invalid token payload', 401));

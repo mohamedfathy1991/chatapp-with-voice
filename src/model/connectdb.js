@@ -2,7 +2,7 @@ import { configDotenv } from "dotenv";
 import mongoose from "mongoose";
 configDotenv()
 
-const mongoDB = process.env.DATABASE_URL;
+const mongoDB = process.env.DATABASE_URL||'mongodb+srv://amir:123@cluster0.n7j1wak.mongodb.net/chat';
  
 
  
