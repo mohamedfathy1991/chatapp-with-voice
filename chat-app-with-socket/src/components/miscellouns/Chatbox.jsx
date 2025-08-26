@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { InfoIcon, EditIcon } from "@chakra-ui/icons";
 import ChatInfoModal from './ChatinfoModal';
-import SingleMessagebox from './singleMessagebox';
+import SingleMessagebox from './SingleMessagebox';
 
 export default function Chatbox() {
   const { user, selectchat } = useContext(Chatcontext);
