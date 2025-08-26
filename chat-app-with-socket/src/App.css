@@ -1,0 +1,13 @@
+
+
+
+.app{
+
+    min-height: 100vh;
+
+background-image: linear-gradient(rgba(205, 210, 218, 0.4), rgba(229, 231, 235, 0.4)), url('./assets/background.jpg');
+    background-size: cover;
+      padding-top: 1px; /* 👈 يمنع margin collapse */
+
+    
+}
